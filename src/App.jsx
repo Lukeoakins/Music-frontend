@@ -12,8 +12,8 @@ export default function App() {
   const [songs, setSongs] = useState([
     {
       id: 1,
-      title: "Song 1",
-      artist: "Artist 1",
+      title: "There Is a Light That Never Goes Out - 2011 Remaster",
+      artist: "The Smiths",
       releaseDate: "2022-01-01",
       genre: "Pop",
       liked: true,
