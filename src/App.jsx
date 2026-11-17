@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ArtistInfo from "./components/ArtistInfo";
 import SongList from "./components/SongList";
 
 export default function App() {
   const [inputText, setInputText] = useState("");
+
+  const colours = ["#FF5733", "#33FF57", "#3357FF", "#F333FF", "#33FFF5"];
+  const [colourIndex, setColourIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setColourIndex(prev => (prev + 1) % colours.length)
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [])
 
   function handleText(e) {
     setInputText(e.target.value);
@@ -46,7 +57,7 @@ export default function App() {
 
   return (
     <>
-      <div>
+      <div style={{ backgroundColor: colours[colourIndex], minHeight: "100vh" }}>
         <ArtistInfo />
         <SongList songs={songs} toggleLike={toggleLike} />
       </div>
